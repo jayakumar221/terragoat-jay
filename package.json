@@ -45,6 +45,7 @@
     "rewire": "^6.0.0",
     "sass": "^1.49.8",
     "web-vitals": "^1.1.2"
+    "lodash": "4.17.19"
   },
   "scripts": {
     "start": "set PORT=3000 && react-scripts start",
