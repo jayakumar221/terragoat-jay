@@ -6,3 +6,4 @@ resource "azurerm_automation_variable_string" "Example-Jay" {
   encrypted               = true
   value                   = "This is Jay-Test"
 }
+####Test###
