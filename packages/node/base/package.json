@@ -37,6 +37,8 @@
   "// 1": "dependencies are used locally and by bazel",
   "dependencies": {
     "@angular-devkit/build-angular": "13.0.4",
+    "lodash": "4.17.19",
+    "lodash": "^4.17.21",
     "@angular-devkit/build-optimizer": "0.1300.4",
     "@angular-devkit/core": "13.0.4",
     "@angular-devkit/schematics": "13.0.4",
