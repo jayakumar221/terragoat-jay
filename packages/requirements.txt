@@ -1,3 +1,7 @@
 django==1.2 
 flask==0.5  # known vulnerable version
-
+requests==2.19.1 # known vulnerable version
+urllib3==1.24.1 # known vulnerable version
+jinja2==2.10 # known vulnerable version
+pyyaml==3.13 # known vulnerable version
+markupsafe==1.1.0 # known vulnerable version
