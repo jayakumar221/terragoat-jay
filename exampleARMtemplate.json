@@ -20,8 +20,8 @@
         "type": "AzureBlobStorage",
         "typeProperties": {
           "connectionString": {
-            "type": "String",  // ❌ insecure: not SecureString
-            "value": "DefaultEndpointsProtocol=https;AccountName=dummy;AccountKey=fakeKey123456==;"  // ❌ hardcoded secret
+            "type": "String",
+            "value": "DefaultEndpointsProtocol=https;AccountName=dummy;AccountKey=fakeKey123456==;"
           }
         }
       },
@@ -38,8 +38,8 @@
       "kind": "StorageV2",
       "properties": {
         "accessTier": "Hot",
-        "supportsHttpsTrafficOnly": false,  // ❌ HTTPS not enforced
-        "allowBlobPublicAccess": true       // ❌ public access allowed
+        "supportsHttpsTrafficOnly": false,
+        "allowBlobPublicAccess": true
       }
     }
   ]
