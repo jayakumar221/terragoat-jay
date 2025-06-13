@@ -1,31 +1,46 @@
 {
-	"contentVersion": "1.0.0.0",
-	"parameters": {
-		"factoryName": {
-			"type": "string",
-			"metadata": "Data Factory name",
-			"defaultValue": "jay-test"
-		}
-	},
-	"variables": {
-		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
-	},
-	"resources": [
-		{
-			"name": "[concat(parameters('factoryName'), '/IZENO_AzureBLOBStore')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2024-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": {
-						"type": "SecureString",
-						"value": "**********"
-					}
-				}
-			},
-			"dependsOn": []
-		}
-	]
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "factoryName": {
+      "type": "string",
+      "metadata": "Data Factory name",
+      "defaultValue": "jay-test"
+    }
+  },
+  "variables": {
+    "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+  },
+  "resources": [
+    {
+      "name": "[concat(parameters('factoryName'), '/IZENO_AzureBLOBStore')]",
+      "type": "Microsoft.DataFactory/factories/linkedServices",
+      "apiVersion": "2024-06-01",
+      "properties": {
+        "annotations": [],
+        "type": "AzureBlobStorage",
+        "typeProperties": {
+          "connectionString": {
+            "type": "String",  // ❌ insecure: not SecureString
+            "value": "DefaultEndpointsProtocol=https;AccountName=dummy;AccountKey=fakeKey123456==;"  // ❌ hardcoded secret
+          }
+        }
+      },
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('factoryName'), 'storage')]",
+      "location": "eastus",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "accessTier": "Hot",
+        "supportsHttpsTrafficOnly": false,  // ❌ HTTPS not enforced
+        "allowBlobPublicAccess": true       // ❌ public access allowed
+      }
+    }
+  ]
 }
