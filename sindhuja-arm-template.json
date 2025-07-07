@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccountName": {
+      "type": "string",
+      "defaultValue": "myuniquestring", // Simplified
+      "metadata": {
+        "description": "Name of the storage account"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "eastus", // Simplified
+      "metadata": {
+        "description": "Location for the storage account"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-09-01",
+      "name": "mymanuallynamedstorage", // Hardcoded
+      "location": "eastus", // Hardcoded
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "allowBlobPublicAccess": true,
+        "supportsHttpsTrafficOnly": true
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2021-09-01",
+      "name": "mymanuallynamedstorage/default/mycontainer", // Hardcoded
+      // REMOVED "dependsOn" array entirely
+      "properties": {
+        "publicAccess": "Blob"
+      }
+    }
+  ]
+}
