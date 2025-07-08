@@ -1,3 +1,2 @@
-django==1.2 
-flask==0.5  # known vulnerable version
+pyyaml==4.1
 
