@@ -1,0 +1,8 @@
+requests==2.19.1           # CVE-2018-18074 (Open Redirect)
+urllib3==1.24.1            # Multiple CVEs (e.g., CVE-2019-11324)
+pyyaml==4.1                # CVE-2017-18342 (Code execution)
+Jinja2==2.7.2              # CVE-2014-1402 (Sandbox escape)
+tornado==4.4.1             # CVE-2016-3171 (XSS)
+chardet==3.0.2             # CVE-2019-9440 (DOS)
+bleach==2.0                # CVE-2018-14745 (HTML sanitization)
+simplejson==3.17.2         # CVE-2021-32736 (Arbitrary code execution)
